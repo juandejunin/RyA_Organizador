@@ -58,6 +58,16 @@ FONT_BOLD = ("Segoe UI", 10, "bold")
 FONT_TITLE = ("Segoe UI", 17, "bold")
 
 
+def ruta_recurso(ruta_relativa):
+    """Localiza recursos tanto al ejecutar el .py como desde PyInstaller."""
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        base = Path(sys._MEIPASS)
+    else:
+        base = Path(__file__).resolve().parent
+    return base / ruta_relativa
+
+
+
 # ---------------------------------------------------------------------------
 # REGISTRO DE ERRORES
 # ---------------------------------------------------------------------------
@@ -237,6 +247,10 @@ class OrganizadorApp:
     def __init__(self, root):
         self.root = root
         self.root.title("R&A Organizador")
+        try:
+            self.root.iconbitmap(str(ruta_recurso("assets/logo.ico")))
+        except tk.TclError:
+            logger.warning("No se pudo cargar el icono de la aplicación.")
         self.root.geometry("700x790")
         self.root.minsize(640, 730)
         self.root.configure(bg=BG)
