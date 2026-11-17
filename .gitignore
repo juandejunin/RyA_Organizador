@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# PyInstaller: archivos generados al compilar
+build/
+dist/
+*.spec
+
+# Ejecutables compilados
+*.exe
+
+# Registros y archivos temporales
+*.log
+*.tmp
+*.bak
+~$*
+
+# Configuracion local de editores
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
